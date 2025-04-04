@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employer Signup | DomesticHelp</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body class="bg-gray-100">
+  <!-- Header Component -->
+  <div id="header"></div>
+
+  <main class="min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md bg-white rounded-lg shadow-md overflow-hidden border border-pink-200">
+      <div class="bg-pink-600 p-6 text-white">
+        <h1 class="text-2xl font-bold">Create Employer Account</h1>
+        <p class="text-blue-100">Register to find trusted domestic help</p>
+      </div>
+
+      <form id="signupForm" class="p-6 space-y-4">
+        <!-- Full Name -->
+        <div>
+          <label for="fullname" class="block text-sm font-medium text-gray-700">Full Name</label>
+          <input type="text" id="fullname" name="fullname" required
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+          <input type="email" id="email" name="email" required
+            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+        </div>
+
+        <!-- Mobile Number -->
+        <div>
+          <label for="mobile" class="block text-sm font-medium text-gray-700">Mobile Number</label>
+          <div class="mt-1 flex rounded-md shadow-sm">
+            <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-gray-500">+1</span>
+            <input type="tel" id="mobile" name="mobile" required
+              class="block w-full rounded-none rounded-r-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 p-2 border">
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <div class="relative mt-1">
+            <input type="password" id="password" name="password" required
+              class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+              <i class="far fa-eye-slash text-gray-400 cursor-pointer" id="togglePassword"></i>
+            </div>
+          </div>
+          <div class="h-1 mt-1 bg-gray-200 rounded-full">
+            <div id="passwordStrength" class="h-full rounded-full w-0"></div>
+          </div>
+          <p class="text-xs text-gray-500 mt-1">Password must be at least 8 characters</p>
+        </div>
+
+        <!-- reCAPTCHA -->
+        <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">
+          Create Account
+        </button>
+
+        <p class="text-center text-sm text-gray-600">
+          Already have an account? <a href="#" class="text-blue-600 hover:text-blue-800">Log in</a>
+        </p>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer Component -->
+  <div id="footer"></div>
+
+  <script src="navigation.js"></script>
+  <script>
+    // Load header and footer components
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+      
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+
+    // Password toggle functionality
+    document.getElementById('togglePassword').addEventListener('click', function() {
+      const password = document.getElementById('password');
+      const icon = this;
+      if (password.type === 'password') {
+        password.type = 'text';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+      } else {
+        password.type = 'password';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+      }
+    });
+
+    // Password strength indicator
+    document.getElementById('password').addEventListener('input', function() {
+      const strengthBar = document.getElementById('passwordStrength');
+      const strength = Math.min(this.value.length / 8, 1);
+      strengthBar.style.width = `${strength * 100}%`;
+      strengthBar.className = `h-full rounded-full ${strength < 0.5 ? 'bg-red-500' : strength < 0.8 ? 'bg-yellow-500' : 'bg-green-500'}`;
+    });
+  </script>
+</body>
+</html>
