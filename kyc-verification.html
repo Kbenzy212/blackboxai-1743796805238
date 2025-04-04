@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verification | DomesticHelp</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+  <!-- Header Component -->
+  <div id="header"></div>
+
+  <main class="min-h-screen">
+    <div class="max-w-4xl mx-auto p-6">
+      <!-- Progress Bar -->
+      <div class="mb-8">
+        <h2 class="text-xl font-semibold mb-2">Step 3: Complete Verification</h2>
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
+          <div class="bg-blue-600 h-2.5 rounded-full" style="width: 75%"></div>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow">
+        <div class="mb-6">
+          <h3 class="text-lg font-medium mb-2">Selected Agency: <span id="selectedAgency" class="font-bold"></span></h3>
+          <p class="text-gray-600 mb-4">Your selected agency will handle the verification process.</p>
+          
+          <div class="bg-white p-6 rounded-lg shadow border border-pink-200 mb-6">
+            <h3 class="text-lg font-medium mb-4">Address Verification Method</h3>
+            <div class="space-y-4">
+              <div class="flex items-center">
+                <input id="homeVisit" name="verificationMethod" type="radio" class="h-4 w-4 text-pink-600 focus:ring-pink-500 border-gray-300">
+                <label for="homeVisit" class="ml-3 block text-sm font-medium text-gray-700">
+                  Home Visit
+                  <p class="text-gray-500 text-sm">A representative visits your residence to verify details</p>
+                </label>
+              </div>
+              <div class="flex items-center">
+                <input id="accompanied" name="verificationMethod" type="radio" class="h-4 w-4 text-pink-600 focus:ring-pink-500 border-gray-300">
+                <label for="accompanied" class="ml-3 block text-sm font-medium text-gray-700">
+                  Accompanied Placement
+                  <p class="text-gray-500 text-sm">Representative comes with domestic worker during first placement</p>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <form id="kycForm" class="space-y-6">
+          <!-- Verification Method -->
+          <div>
+            <h4 class="text-md font-medium mb-4">Choose Verification Method</h4>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <input id="home-visit" name="verification-method" type="radio" checked 
+                    class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
+                </div>
+                <div class="ml-3">
+                  <label for="home-visit" class="font-medium text-gray-700">Home Visit Verification</label>
+                  <p class="text-sm text-gray-500">A representative from the agency will visit your home to verify your details.</p>
+                  <div class="mt-2 bg-blue-50 p-3 rounded-md">
+                    <p class="text-sm text-blue-700"><i class="fas fa-info-circle mr-1"></i> Typically completed within 2 business days</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <input id="accompanied" name="verification-method" type="radio" 
+                    class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
+                </div>
+                <div class="ml-3">
+                  <label for="accompanied" class="font-medium text-gray-700">Accompanied Placement</label>
+                  <p class="text-sm text-gray-500">The agency will send a representative with the domestic worker during first placement.</p>
+                  <div class="mt-2 bg-blue-50 p-3 rounded-md">
+                    <p class="text-sm text-blue-700"><i class="fas fa-info-circle mr-1"></i> Verification happens during the first placement</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Document Upload -->
+          <div>
+            <h4 class="text-md font-medium mb-2">Upload Required Documents</h4>
+            <p class="text-sm text-gray-500 mb-4">Please upload clear copies of your ID and proof of residence.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                <i class="fas fa-id-card text-3xl text-gray-400 mb-2"></i>
+                <p class="text-sm font-medium text-gray-700">ID Document</p>
+                <p class="text-xs text-gray-500 mb-3">(Passport/National ID)</p>
+                <input type="file" id="id-document" class="hidden">
+                <label for="id-document" class="cursor-pointer bg-blue-50 text-blue-600 px-3 py-1 rounded-md text-sm hover:bg-blue-100">
+                  <i class="fas fa-upload mr-1"></i> Upload File
+                </label>
+              </div>
+
+              <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                <i class="fas fa-home text-3xl text-gray-400 mb-2"></i>
+                <p class="text-sm font-medium text-gray-700">Proof of Residence</p>
+                <p class="text-xs text-gray-500 mb-3">(Utility bill/Lease agreement)</p>
+                <input type="file" id="residence-document" class="hidden">
+                <label for="residence-document" class="cursor-pointer bg-blue-50 text-blue-600 px-3 py-1 rounded-md text-sm hover:bg-blue-100">
+                  <i class="fas fa-upload mr-1"></i> Upload File
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Emergency Contact -->
+          <div>
+            <h4 class="text-md font-medium mb-4">Emergency Contact Information</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="contact-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                <input type="text" id="contact-name" name="contact-name" required
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+              </div>
+              <div>
+                <label for="contact-relation" class="block text-sm font-medium text-gray-700">Relationship</label>
+                <input type="text" id="contact-relation" name="contact-relation" required
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+              </div>
+              <div>
+                <label for="contact-phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                <input type="tel" id="contact-phone" name="contact-phone" required
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+              </div>
+              <div>
+                <label for="contact-email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="contact-email" name="contact-email"
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+              </div>
+            </div>
+          </div>
+
+          <!-- Schedule Visit (conditional) -->
+          <div id="schedule-visit" class="space-y-4">
+            <h4 class="text-md font-medium">Schedule Your Verification Visit</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="visit-date" class="block text-sm font-medium text-gray-700">Preferred Date</label>
+                <input type="date" id="visit-date" name="visit-date" min="" 
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+              </div>
+              <div>
+                <label for="visit-time" class="block text-sm font-medium text-gray-700">Preferred Time</label>
+                <select id="visit-time" name="visit-time" 
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                  <option>Morning (9AM - 12PM)</option>
+                  <option>Afternoon (1PM - 4PM)</option>
+                  <option>Evening (5PM - 8PM)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-between pt-4">
+            <button type="button" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50">
+              Back
+            </button>
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+              Complete Verification
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Component -->
+  <div id="footer"></div>
+
+  <script src="navigation.js"></script>
+  <script>
+    // Load header and footer components
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+      
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+
+    // Set minimum date for scheduling (tomorrow)
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const minDate = tomorrow.toISOString().split('T')[0];
+    document.getElementById('visit-date').min = minDate;
+
+    // Toggle schedule visit section based on verification method
+    document.querySelectorAll('input[name="verification-method"]').forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        if (e.target.id === 'home-visit') {
+          document.getElementById('schedule-visit').classList.remove('hidden');
+        } else {
+          document.getElementById('schedule-visit').classList.add('hidden');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
