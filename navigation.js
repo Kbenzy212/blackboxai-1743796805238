@@ -20,18 +20,26 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
-    // Agency selection buttons
-    const agencyButtons = document.querySelectorAll('.select-agency');
-    if (agencyButtons.length > 0) {
-      agencyButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          // Store selected agency name from button's data attribute
-          const agencyName = this.closest('.agency-card').querySelector('h3').textContent;
+    // Enhanced agency selection handling
+    document.addEventListener('click', function(e) {
+      const button = e.target.closest('.select-agency');
+      if (button) {
+        const agencyCard = button.closest('.agency-card, .bg-white');
+        if (agencyCard) {
+          const agencyName = agencyCard.querySelector('h3').textContent;
+          const agencyId = button.dataset.agencyId || 
+                          agencyName.toLowerCase().replace(/\s+/g, '-');
+          
           localStorage.setItem('selectedAgency', agencyName);
-          window.location.href = 'kyc-verification.html';
-        });
-      });
-    }
+          localStorage.setItem('selectedAgencyId', agencyId);
+          
+          // Ensure navigation occurs
+          setTimeout(() => {
+            window.location.href = 'kyc-verification.html';
+          }, 100);
+        }
+      }
+    });
 
     // KYC form submission
     const kycForm = document.getElementById('kycForm');
@@ -63,6 +71,14 @@ document.addEventListener('DOMContentLoaded', function() {
       button.addEventListener('click', function() {
         history.back();
       });
+    });
+
+    // Task management navigation
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('[href="task-management.html"]')) {
+        e.preventDefault();
+        window.location.href = 'task-management.html';
+      }
     });
   };
 
