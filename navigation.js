@@ -20,23 +20,19 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
-    // Enhanced agency selection handling
+    // Agency selection button handling
     document.addEventListener('click', function(e) {
-      const button = e.target.closest('.select-agency');
-      if (button) {
-        const agencyCard = button.closest('.agency-card, .bg-white');
+      if (e.target.closest('.select-agency')) {
+        const button = e.target.closest('.select-agency');
+        const agencyCard = button.closest('.agency-card');
         if (agencyCard) {
           const agencyName = agencyCard.querySelector('h3').textContent;
-          const agencyId = button.dataset.agencyId || 
-                          agencyName.toLowerCase().replace(/\s+/g, '-');
+          const agencyId = button.dataset.agencyId || agencyName.toLowerCase().replace(/\s+/g, '-');
           
           localStorage.setItem('selectedAgency', agencyName);
           localStorage.setItem('selectedAgencyId', agencyId);
           
-          // Ensure navigation occurs
-          setTimeout(() => {
-            window.location.href = 'kyc-verification.html';
-          }, 100);
+          window.location.href = 'kyc-verification.html';
         }
       }
     });
@@ -73,11 +69,32 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
 
-    // Task management navigation
+    // Protected route navigation
     document.addEventListener('click', function(e) {
+      // Task management (protected)
       if (e.target.closest('[href="task-management.html"]')) {
         e.preventDefault();
-        window.location.href = 'task-management.html';
+        if (localStorage.getItem('loggedIn') === 'true') {
+          window.location.href = 'task-management.html';
+        } else {
+          window.location.href = 'login.html';
+        }
+      }
+
+      // Daily Planner (protected)
+      if (e.target.closest('[href="daily-planner.html"]')) {
+        e.preventDefault();
+        if (localStorage.getItem('loggedIn') === 'true') {
+          window.location.href = 'daily-planner.html';
+        } else {
+          window.location.href = 'login.html';
+        }
+      }
+      
+      // Login navigation
+      if (e.target.closest('[href="login.html"]')) {
+        e.preventDefault();
+        window.location.href = 'login.html';
       }
     });
   };
