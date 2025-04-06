@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contract & Rights Center | Home-Staff Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+  <div id="header"></div>
+
+  <main class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-6">Contract & Rights Center</h1>
+
+    <!-- Contract Templates Section -->
+    <div class="bg-white rounded-lg shadow-sm p-6 mb-6 border border-gray-100">
+      <h2 class="text-xl font-semibold mb-4">MoL-Compliant Contract Templates</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+          <h3 class="font-medium text-lg mb-2">Standard Domestic Worker Contract</h3>
+          <p class="text-gray-600 mb-3">Pre-approved by Ministry of Labor</p>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
+            Use Template
+          </button>
+        </div>
+        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+          <h3 class="font-medium text-lg mb-2">Live-in Helper Contract</h3>
+          <p class="text-gray-600 mb-3">Includes accommodation terms</p>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
+            Use Template
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Smart Contract Builder -->
+    <div class="bg-white rounded-lg shadow-sm p-6 mb-6 border border-gray-100">
+      <h2 class="text-xl font-semibold mb-4">Smart Contract Builder</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-medium mb-2">1. Basic Information</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Worker Name</label>
+              <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Salary (EGP)</label>
+              <input type="number" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-medium mb-2">2. Key Clauses</h3>
+          <div class="space-y-4">
+            <div class="p-3 bg-blue-50 rounded-lg border border-blue-100">
+              <div class="flex justify-between">
+                <h4 class="font-medium">Working Hours</h4>
+                <button class="text-blue-600 hover:text-blue-800">
+                  <i class="fas fa-info-circle"></i>
+                </button>
+              </div>
+              <select class="mt-2 block w-full rounded-md border-gray-300 shadow-sm">
+                <option>Standard 8 hours/day</option>
+                <option>Custom hours</option>
+              </select>
+            </div>
+            <div class="p-3 bg-blue-50 rounded-lg border border-blue-100">
+              <div class="flex justify-between">
+                <h4 class="font-medium">Time Off</h4>
+                <button class="text-blue-600 hover:text-blue-800">
+                  <i class="fas fa-info-circle"></i>
+                </button>
+              </div>
+              <select class="mt-2 block w-full rounded-md border-gray-300 shadow-sm">
+                <option>1 day/week + public holidays</option>
+                <option>Custom schedule</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button class="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition">
+          Generate Contract
+        </button>
+      </div>
+    </div>
+
+    <!-- Rights Awareness -->
+    <div class="bg-white rounded-lg shadow-sm p-6 mb-6 border border-gray-100">
+      <h2 class="text-xl font-semibold mb-4">Rights Awareness</h2>
+      <div class="space-y-4">
+        <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+          <h3 class="font-medium flex items-center">
+            <i class="fas fa-exclamation-triangle text-yellow-600 mr-2"></i>
+            Probation Period Rights
+          </h3>
+          <p class="mt-2 text-sm">Maximum 3 months probation with clear terms</p>
+        </div>
+        <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+          <h3 class="font-medium flex items-center">
+            <i class="fas fa-umbrella-beach text-blue-600 mr-2"></i>
+            Annual Leave Entitlements
+          </h3>
+          <p class="mt-2 text-sm">21 days paid leave after 1 year of service</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Digital Signing -->
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+      <h2 class="text-xl font-semibold mb-4">Digital Signing</h2>
+      <div class="flex flex-col items-center justify-center py-8 border-2 border-dashed border-gray-300 rounded-lg">
+        <i class="fas fa-file-signature text-4xl text-gray-400 mb-4"></i>
+        <p class="text-gray-500 mb-4">Your generated contract will appear here</p>
+        <button class="bg-pink-600 text-white px-6 py-2 rounded-md hover:bg-pink-700 transition">
+          Sign Contract
+        </button>
+      </div>
+    </div>
+
+    <!-- Legal Compliance Checker -->
+    <div class="bg-white rounded-lg shadow-sm p-6 mb-6 border border-gray-100">
+      <h2 class="text-xl font-semibold mb-4">Legal Compliance Checker</h2>
+      <div class="p-4 bg-red-50 rounded-lg border border-red-200">
+        <div class="flex items-start">
+          <i class="fas fa-gavel text-red-600 mt-1 mr-3"></i>
+          <div>
+            <h3 class="font-medium">Compliance Status</h3>
+            <p class="text-sm mt-1">Your contract is 100% compliant with Egyptian labor laws</p>
+            <button class="mt-2 text-sm text-red-600 hover:text-red-800 flex items-center">
+              <i class="fas fa-info-circle mr-1"></i> View compliance details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Auto-renew & Exit Flow -->
+    <div class="bg-white rounded-lg shadow-sm p-6 mb-6 border border-gray-100">
+      <h2 class="text-xl font-semibold mb-4">Auto-renew & Exit Flow</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-4 bg-green-50 rounded-lg border border-green-200">
+          <h3 class="font-medium flex items-center">
+            <i class="fas fa-sync-alt text-green-600 mr-2"></i>
+            Renew Contract
+          </h3>
+          <p class="text-sm mt-2">Easily renew your contract with updated terms</p>
+          <button class="mt-3 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition">
+            Start Renewal
+          </button>
+        </div>
+        <div class="p-4 bg-red-50 rounded-lg border border-red-200">
+          <h3 class="font-medium flex items-center">
+            <i class="fas fa-sign-out-alt text-red-600 mr-2"></i>
+            Terminate Contract
+          </h3>
+          <p class="text-sm mt-2">Compliant termination process with documentation</p>
+          <button class="mt-3 bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition">
+            Start Termination
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legal Aid Partners -->
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+      <h2 class="text-xl font-semibold mb-4">Legal Aid Partners</h2>
+      <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+        <div class="flex items-start">
+          <i class="fas fa-hands-helping text-blue-600 mt-1 mr-3"></i>
+          <div>
+            <h3 class="font-medium">Need Legal Support?</h3>
+            <p class="text-sm mt-1">Connect with our trusted legal aid partners for assistance</p>
+            <button class="mt-3 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
+              Request Support
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+  <script src="navigation.js"></script>
+  <script>
+    // Contract generation logic would go here
+    document.querySelectorAll('.bg-blue-50 button').forEach(button => {
+      button.addEventListener('click', function() {
+        const clause = this.parentElement.parentElement.querySelector('h4').textContent;
+        alert(`Learn more about: ${clause}`);
+      });
+    });
+  </script>
+</body>
+</html>
