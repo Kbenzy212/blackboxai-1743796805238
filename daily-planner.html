@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Planner | Home-Staff Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
+</head>
+<body class="bg-gray-100">
+  <div id="header"></div>
+
+  <main class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-6">Daily Task Planner</h1>
+
+    <!-- Weekly Task Scheduler -->
+    <div class="bg-white rounded-lg shadow-sm p-6 mb-6 border border-gray-100">
+      <h2 class="text-xl font-semibold mb-4">Weekly Schedule</h2>
+      <div class="flex space-x-2 mb-4">
+        <button class="px-4 py-2 bg-blue-100 text-blue-800 rounded-md">Monday</button>
+        <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-md">Tuesday</button>
+        <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-md">Wednesday</button>
+        <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-md">Thursday</button>
+        <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-md">Friday</button>
+        <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-md">Saturday</button>
+        <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-md">Sunday</button>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="taskBoard">
+        <!-- To Do Column -->
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h3 class="font-medium mb-3">To Do</h3>
+          <div class="space-y-3" id="todoTasks">
+            <div class="p-3 bg-white border border-green-200 rounded-lg cursor-move">
+              <div class="flex justify-between">
+                <span class="font-medium">Morning Cleaning</span>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">High</span>
+              </div>
+              <p class="text-sm text-gray-600 mt-1">Living room, kitchen</p>
+            </div>
+            <div class="p-3 bg-white border border-yellow-200 rounded-lg cursor-move">
+              <div class="flex justify-between">
+                <span class="font-medium">Grocery Shopping</span>
+                <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Medium</span>
+              </div>
+              <p class="text-sm text-gray-600 mt-1">Weekly supplies</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- In Progress Column -->
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h3 class="font-medium mb-3">In Progress</h3>
+          <div class="space-y-3" id="inProgressTasks">
+            <div class="p-3 bg-white border border-blue-200 rounded-lg cursor-move">
+              <div class="flex justify-between">
+                <span class="font-medium">Laundry</span>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Low</span>
+              </div>
+              <p class="text-sm text-gray-600 mt-1">Bed linens</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Completed Column -->
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h3 class="font-medium mb-3">Completed</h3>
+          <div class="space-y-3" id="completedTasks">
+            <div class="p-3 bg-white border border-gray-200 rounded-lg opacity-70">
+              <div class="flex justify-between">
+                <span class="font-medium">Breakfast Prep</span>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">High</span>
+              </div>
+              <p class="text-sm text-gray-600 mt-1">7:00-8:00 AM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Work Hour Tracker -->
+    <div class="bg-white rounded-lg shadow-sm p-6 mb-6 border border-gray-100">
+      <h2 class="text-xl font-semibold mb-4">Work Hour Tracker</h2>
+      <div class="h-6 bg-gray-200 rounded-full overflow-hidden mb-2">
+        <div class="h-full bg-green-500" style="width: 50%"></div>
+      </div>
+      <div class="flex justify-between text-sm text-gray-600">
+        <span>5h 30m worked</span>
+        <span>3h 30m remaining</span>
+      </div>
+      <div class="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+        <i class="fas fa-exclamation-circle text-yellow-500 mr-2"></i>
+        <span>Approaching maximum work hours</span>
+      </div>
+    </div>
+
+    <!-- Task Creation -->
+    <div class="bg-white rounded-lg shadow-sm p-6 mb-6 border border-gray-100">
+      <h2 class="text-xl font-semibold mb-4">Add New Task</h2>
+      <form class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Task Name</label>
+          <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Category</label>
+            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              <option>Cleaning</option>
+              <option>Cooking</option>
+              <option>Childcare</option>
+              <option>Errands</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Priority</label>
+            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              <option>High</option>
+              <option>Medium</option>
+              <option>Low</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Estimated Duration</label>
+          <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" placeholder="e.g. 1 hour">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Recurrence</label>
+          <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+            <option>One-time</option>
+            <option>Daily</option>
+            <option>Weekly</option>
+            <option>Custom</option>
+          </select>
+        </div>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
+          Add Task
+        </button>
+      </form>
+    </div>
+
+    <!-- Daily Summary -->
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+      <h2 class="text-xl font-semibold mb-4">Daily Summary</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="p-4 bg-green-50 rounded-lg">
+          <h3 class="font-medium text-green-800">Completed</h3>
+          <p class="text-2xl font-bold mt-2">8</p>
+        </div>
+        <div class="p-4 bg-yellow-50 rounded-lg">
+          <h3 class="font-medium text-yellow-800">In Progress</h3>
+          <p class="text-2xl font-bold mt-2">2</p>
+        </div>
+        <div class="p-4 bg-red-50 rounded-lg">
+          <h3 class="font-medium text-red-800">Pending</h3>
+          <p class="text-2xl font-bold mt-2">1</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+  <script src="navigation.js"></script>
+  <script>
+    // Initialize drag and drop functionality
+    new Sortable(document.getElementById('todoTasks'), {
+      group: 'tasks',
+      animation: 150,
+      onEnd: function() {
+        checkWorkHours();
+      }
+    });
+    new Sortable(document.getElementById('inProgressTasks'), {
+      group: 'tasks',
+      animation: 150,
+      onEnd: function() {
+        checkWorkHours();
+      }
+    });
+    new Sortable(document.getElementById('completedTasks'), {
+      group: 'tasks',
+      animation: 150,
+      onEnd: function() {
+        checkWorkHours();
+      }
+    });
+
+    // Work hour tracking logic
+    function checkWorkHours() {
+      const totalHours = calculateTotalHours();
+      const progressBar = document.querySelector('.bg-green-500');
+      const statusText = document.querySelector('.flex.justify-between');
+      const alertBox = document.querySelector('.bg-yellow-50');
+      
+      // Update progress bar (50% for demo)
+      progressBar.style.width = '50%';
+      
+      // Show/hide alert based on hours
+      if (totalHours > 6) {
+        alertBox.classList.remove('hidden');
+      } else {
+        alertBox.classList.add('hidden');
+      }
+    }
+
+    function calculateTotalHours() {
+      // In a real app, this would calculate from actual tasks
+      return 5.5; // Demo value
+    }
+
+    // Initialize with current day selected
+    document.querySelector('.bg-blue-100').click();
+  </script>
+</body>
+</html>
